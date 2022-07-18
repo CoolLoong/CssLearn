@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* 一个字体族名和一个通用字体族名 */
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+ul{
+    position: relative;
+    display: flex;
+    /* 行列间隙20px */
+    gap: 20px;
+}
+
+ul li{
+    position: relative;
+    list-style: none;
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    border-radius: 60px;
+    cursor: pointer;
+    /* 黑色阴影 x轴偏移0px y轴偏移10px 模糊半径25px */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+
+ul li:hover{
+    width: 180px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0);
+}
+
+/* li内部渐变颜色效果 */
+ul li::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 60px;
+    /* var引用外部li内联样式定义自定义属性的颜色 */
+    background: linear-gradient(45deg,var(--i),var(--j));
+    /* 透明 */
+    opacity: 0;
+    transition: 0.5s;
+}
+
+ul li:hover::before{
+    /* 不透明 */
+    opacity: 1;
+}
+
+/* li外部渐变阴影效果 */
+ul li::after{
+    content: '';
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    height: 100%;
+    border-radius: 60px;
+    background: linear-gradient(45deg,var(--i),var(--j));
+    transition: 0.5s;
+    /* 模糊效果 */
+    filter: blur(15px);
+    /* 阴影在下层显示 */
+    z-index: -1;
+    opacity: 0; 
+}
+
+ul li:hover::after{
+    opacity: 0.5;
+}
+
+ul li ion-icon{
+    color: #777;
+    /* 1.5倍字体大写(默认16px) */
+    font-size: 1.5em;
+    /* 过渡0.5s */
+    transition: 0.5s;
+    /* 图标恢复延迟 */
+    transition-delay: 0.25s;
+}
+
+ul li:hover ion-icon{
+    /* 图标缩小不见 */
+    transform: scale(0);
+    color: #fff;
+    transition-delay: 0s;
+}
+
+ul li span{
+    position: absolute;
+}
+
+ul li .title{
+    color: #fff;
+    font-size: 1.25em;
+    /* 文字全变为大写 */
+    text-transform: uppercase;
+    /* 文本字符的间距0.1倍字体大小 */
+    letter-spacing: 0.1em;
+    /* 文字默认隐藏 */
+    transform: scale(0);
+    transition: 0.5s;
+    transition-delay: 0s;
+}
+
+ul li:hover .title{
+    transform: scale(1);
+    /* 文字出现延迟 */
+    transition-delay: 0.25s;
+}

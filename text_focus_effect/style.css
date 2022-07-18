@@ -40,9 +40,10 @@ h2 span:hover{
 h2 span i{
     position: absolute;
     inset: 0;
+    /* 背景透明 */
     background: transparent;
 }
-/* ::before伪元素可用于在元素内容之前插入一些内容。 */
+/* ::before伪元素选择器可用于在元素内容之前插入一些内容。 */
 h2 span:hover i::before{
     content: '';
     position: absolute;
@@ -51,6 +52,7 @@ h2 span:hover i::before{
     width: 2px;
     height: 8px;
     background: #fff;
+    /* 元素的框架上添加阴影效果 x轴偏移0 y轴偏移53px(下移)*/
     box-shadow: 0 53px #fff,
     36px 53px #fff,
     36px 0 #fff;
