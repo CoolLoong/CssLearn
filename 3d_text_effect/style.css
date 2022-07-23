@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #333;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.box {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    /* transform-style设置元素的子元素是位于 3D 空间中还是平面中。 */
+    transform-style: preserve-3d;
+}
+
+.box div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    /* 添加动画  动画名 动画周期的时长 每帧动画执行的节奏  动画在结束前运行的次数*/
+    /* 添加animate动画 周期24s 匀速播放 播放次数无尽 */
+    animation: animate 24s linear infinite;
+}
+/* 灵魂部分 添加animate动画关键帧 */
+@keyframes animate{
+    /* form */
+    0%{
+        /* perspective制作3d透视效果 值是距离观察者与z=0平面的距离,实现透视效果*/
+        transform: perspective(1000px) rotateX(0deg);
+    }
+    /* to */
+    100%{
+        transform: perspective(1000px) rotateX(360deg);
+    }
+}
+
+.box div span {
+    position: absolute;
+    inset: 0;
+    /* rotateX它可以让一个元素围绕横坐标(水平轴)旋转  calc()进行算式计算*/
+    transform: rotateX(calc(var(--i)*15deg));
+}
+
+.box div span::before{
+    content: '3D Text';
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    /* text-align定义行内内容（例如文字）如何相对它的块父元素对齐 */
+    text-align: center;
+    color: #fffd;
+    text-transform: uppercase;
+    font-size: 8em;
+    /* 指定了字体的粗细程度,值越大越粗 */
+    font-weight: 800;
+    /* 文本轮廓粗细和颜色 */
+    -webkit-text-stroke: 2px #000;
+    /* 添加文字阴影 x偏移0 y偏移0 模糊半径50px 阴影颜色*/
+    text-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.box div span:nth-child(3n+2)::before{
+    color: #e3f2fddd;
+}
+.box div span:nth-child(3n+3)::before{
+    color: #fce4ecdd;
+}
